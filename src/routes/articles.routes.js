@@ -1,24 +1,17 @@
 import express from "express";
-import ArticlesService from "../services/articles.service.js";
-
 const router = express.Router();
-const service = new ArticlesService();
+import {
+  getAllArticles,
+  getOneArticle,
+  createOneArticle,
+  updateOneArticle,
+  deleteOneArticle,
+} from "../controllers/articles.controller.js";
 
-// Get All Articles
-router.get("/", (req, res) => {
-  res.json("From articles router");
-});
-
-// Get One Article
-router.get("/:id", (req, res) => {});
-
-// Create One Article
-router.post("/", (req, res) => {});
-
-// Update One Article
-router.put("/:id", (req, res) => {});
-
-// Detele One Article
-router.put("/:id", (req, res) => {});
+router.get("/", getAllArticles);
+router.get("/:id", getOneArticle);
+router.post("/", createOneArticle);
+router.put("/:id", updateOneArticle);
+router.delete("/:id", deleteOneArticle);
 
 export default router;
